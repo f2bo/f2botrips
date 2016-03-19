@@ -9,6 +9,7 @@ using Microsoft.Azure.Mobile.Server.Config;
 using SmartTripsService.DataObjects;
 using SmartTripsService.Models;
 using Owin;
+using Microsoft.Azure.Mobile.Server.Tables.Config;
 
 namespace SmartTripsService
 {
@@ -17,10 +18,23 @@ namespace SmartTripsService
         public static void ConfigureMobileApp(IAppBuilder app)
         {
             HttpConfiguration config = new HttpConfiguration();
+            var options = new MobileAppConfiguration();
 
             new MobileAppConfiguration()
-                .UseDefaultConfiguration()
-                .ApplyTo(config);
+            ////.AddMobileAppHomeController()             // from the Home package
+            //.MapApiControllers()
+            //.AddTables(                               // from the Tables package
+            //    new MobileAppTableConfiguration()
+            //        .MapTableControllers()
+            //        .AddEntityFramework()     // from the Entity package
+            //    )
+            ////.AddAppServiceAuthentication()            // from the Authentication package
+            //.AddPushNotifications()                   // from the Notifications package
+            //.MapLegacyCrossDomainController()         // from the CrossDomain package
+            //.ApplyTo(config);
+
+            .UseDefaultConfiguration()
+            .ApplyTo(config);
 
             // Use Entity Framework Code First to create database tables based on your DbContext
             Database.SetInitializer(new MobileServiceInitializer());

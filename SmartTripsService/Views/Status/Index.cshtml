@@ -1,0 +1,14 @@
+﻿@model SmartTripsService.Models.StatusViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>IoT device registration: @Model.IoTStatus</h2>
+<h2>Device key: @Model.IoTDeviceKey</h2>
+<h2>@Model.IoTReason</h2>
+<hr />
+<h2>SQL Database status: @Model.SqlStatus</h2>
+<h2>Row count: @Model.SqlRowCount</h2>
+<h2>@Model.SqlReason</h2>
+
